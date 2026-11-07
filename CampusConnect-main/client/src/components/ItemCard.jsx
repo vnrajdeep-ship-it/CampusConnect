@@ -1,0 +1,5 @@
+import { Link } from 'react-router-dom';
+import { MapPin, CalendarDays, ArrowUpRight } from 'lucide-react';
+export default function ItemCard({ item }) {
+  return <Link to={`/items/${item._id}`} className="item-card"><div className={`item-visual ${item.type}`}><span className={`pill ${item.type}`}>{item.type === 'lost' ? 'Lost item' : 'Found item'}</span><span className="visual-icon">{({ Electronics:'🎧', 'ID / Cards':'🪪', Accessories:'🎒', Clothing:'👕', Books:'📚', Keys:'🔑', Other:'📦' })[item.category] || '📦'}</span></div><div className="item-card-body"><div className="card-topline"><span className="category-label">{item.category}</span><span className={`status ${item.status}`}>{item.status}</span></div><h3>{item.title}</h3><p className="clamp">{item.description}</p><div className="item-meta"><span><MapPin size={14}/>{item.location}</span><span><CalendarDays size={14}/>{new Date(item.date).toLocaleDateString()}</span></div><div className="card-bottom"><span>View details</span><ArrowUpRight size={17}/></div></div></Link>;
+}
